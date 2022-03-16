@@ -1,0 +1,35 @@
+
+<div class="row" style="margin-top: 10%;"  >
+    <div class="col-sm-3"></div>   
+  <div class="col-sm-6 border">
+      <div class="container mt-3 mb-3">
+          <h2>LOGIN</h2> 
+          <form #loginform="ngForm" (ngSubmit)="onSubmit(loginform.value)" novalidate>
+            <div class="mb-3 mt-3">
+              <label for="Email"><strong>Email</strong></label>
+              <input type="email" class="form-control" id="Email"   required placeholder="Enter Email" name="Email" #Email="ngModel" ngModel>
+            </div> 
+
+           
+
+            <div class="mb-3">
+              <label for="Password"><strong>Password:</strong></label>
+              <input type="Password" class="form-control" id="Password" required placeholder="Enter password" name="Password" #Password="ngModel" ngModel>
+            </div>
+
+            
+
+           
+            <button type="submit" class="btn btn-primary" (click)="onclick()"[disabled]="!loginform.valid">Submit</button>
+            <button type="submit" class="btn btn-primary float-end">Register</button>
+          </form>
+        </div>
+      </div>
+  
+  <div class="col-sm-3"></div>
+</div>
+
+
+{{result | json}}<br>
+
+ <!-- {{postdata | json}} -->

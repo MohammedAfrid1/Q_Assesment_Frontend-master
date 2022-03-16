@@ -1,0 +1,194 @@
+
+<!-- ----------------------------------------------------- -->
+<div class="offcanvas offcanvas-start" id="demo" style="width:250px;">
+  <div class="offcanvas-header">
+    <h1 class="offcanvas-title">Menu</h1>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <!-- body -->
+  <div class="offcanvas-body">
+    <div class="container mt-3">
+    
+      
+      <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#myModal"> History
+      </button>
+    </div>
+    <div class="container mt-3">
+    
+      
+      <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#myModal1">AddUser
+      </button>
+    </div>
+    
+         <!-- <div class="container mt-3">
+               <button class="btn btn-secondary" type="button">A Button</button>
+         </div> -->
+  </div>
+</div>
+
+<!-- Button sidebar -->
+<!-- <button class="btn btn-info" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">
+  Click Me
+</button> -->
+<!-- ----------------------------------- -->
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()" >    
+  <div class="container mt-3">
+    <button class="btn btn-outline-info" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">
+        Click Me
+    </button>
+  
+        <h2>Invite Users</h2>
+        
+    
+        
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th></th>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td><input type="checkbox" id="u_{{user.Id}}" [value]="user.Email" (change)="onCheckboxChange($event)"></td>
+              <td>{{user.Id}}</td>
+              <td>{{user.Name}}</td>
+              <td>{{user.Email}}</td>
+            </tr>
+         
+          </tbody>
+        </table>
+        
+        <input type="date"  id="mydate" name="mydate" value="" formControlName="mydate"style="margin-left: 100px;">
+        <input type="time"  id="mytime" name="mytime" value="" formControlName="mytime"style="margin-left: 50px;">
+        <input type="submit" value="Send"   class="btn btn-outline-success" style="margin-left: 200px;width: 150px;">
+  </div>
+     
+      <input type="hidden" id="selectedmails" name="selectedmails" value="" formControlName="selectedmails">
+      <!-- <input type="submit" value="Send" class="btn btn-outline-success" style="margin-left: 900px;"> -->
+      <!-- {{s|json}} -->
+</form>
+    
+    <!-- The Modal 11111111111-->
+<div class="modal a"  id="myModal">
+  <div class="container mb-4" style="max-width: 1000px; ">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h1 class="modal-title">Last Zoom Meets</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body " >
+       
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th></th>
+              <th>ID</th>
+              <th>Selected_Mails</th>
+              <th>Date</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let k of u">
+              <td></td>
+              <td>{{k.Id}}</td>
+              <td>{{k.selectedmails}}</td>
+              <td>{{k.mydate}}</td>
+              <td>{{k.mytime}}</td>
+            </tr>
+         
+          </tbody>
+      
+        </table>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- The Modal 222222222-->
+<div class="modal a"  id="myModal1">
+  <div class="container mb-4" style="max-width: 1000px; ">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h1 class="modal-title">Add User</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body " >
+       
+        <div classs="fluid-container" id="add">
+    
+          <form  [formGroup]="AddUser" action="/action_page.php" (ngSubmit)="oonSubmit()" novalidate>
+           
+              <div class="row">
+                <div class="col-10">
+                  <p>
+                    <label for="Name">Name </label>
+                    <input type="text" id="Name" name="Name" class="form-control" formControlName="Name">
+                    
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-10">
+                  <p>
+                    <label for="Email">Email</label>
+                    <input type="email" id="Email" name="Email" class="form-control" formControlName="Email">
+                    
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-10">
+                  <p>
+                    <label for="Password">Password </label>
+                    <input type="password" id="Password" name="Password" class="form-control" formControlName="Password">
+                    
+                  </p>
+                 </div>
+              </div>   
+              
+          <p style="margin-left: 120px;">
+            <button type="submit" style="width:200px;" class="btn btn-primary ms-1"><i><b>Submit</b></i></button>
+          </p>
+              
+          
+            </form>
+      
+          
+          </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
